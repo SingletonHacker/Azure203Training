@@ -1,0 +1,65 @@
+#Ignore .git
+.git
+
+# Ignore opendb file to prevent Team Explorer of VS2015 to stop working
+STARSvb0/YieldStar.VC.opendb
+STARSvb0/YieldStar.VC.VC.opendb
+
+# User-specific files
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+**/[Dd]ebug/
+**/[Rr]elease/
+**/x64/
+**/build/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Oo]bj461/
+**/StyleCop.Cache
+
+# MSTest test Results
+**/[Tt]est[Rr]esult*/
+**/[Bb]uild[Ll]og.*
+
+# Intermediates
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.scc
+*.ldb
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.cachefile
+
+# GIT Merge
+*.orig
