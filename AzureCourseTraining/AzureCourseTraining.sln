@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebFrontEnd", "MyWebFront
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAzureWebJob", "MyAzureWebJob\MyAzureWebJob.csproj", "{83AB5FB9-59A5-4367-94A1-10407759E310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Functions\Functions.csproj", "{377A04B8-EAEC-472A-900F-7348121E65B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functions", "Functions\Functions.csproj", "{377A04B8-EAEC-472A-900F-7348121E65B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{65D63031-C154-40A5-B297-6E6EAC698481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{377A04B8-EAEC-472A-900F-7348121E65B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{377A04B8-EAEC-472A-900F-7348121E65B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{377A04B8-EAEC-472A-900F-7348121E65B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D63031-C154-40A5-B297-6E6EAC698481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D63031-C154-40A5-B297-6E6EAC698481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D63031-C154-40A5-B297-6E6EAC698481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D63031-C154-40A5-B297-6E6EAC698481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

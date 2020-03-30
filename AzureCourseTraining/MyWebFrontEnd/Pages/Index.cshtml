@@ -12,3 +12,24 @@
         <input type="submit">
     </form>
 </div>
+
+<div>
+    <h2>De data van table storage:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var person in Model.Persons)
+            {
+            <tr>
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

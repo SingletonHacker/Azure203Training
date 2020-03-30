@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Functions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Azure.Storage;
+using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Storage.Queue;
+using CloudStorageAccount = Microsoft.Azure.Storage.CloudStorageAccount;
+using CosmosCloudStorageAccount = Microsoft.Azure.Cosmos.Table.CloudStorageAccount;
 
 namespace MyWebFrontEnd.Pages
 {
@@ -14,27 +19,38 @@ namespace MyWebFrontEnd.Pages
         private const string connectionString =
             "DefaultEndpointsProtocol=https;AccountName=bjornosstorageaccount;AccountKey=o2i2VBJ3z2zsezMW61SMNj3cbW61gnEuSFP9yrkqIgJnY97uwbpa6iB8vGVdAUdPGaZ/55+mZswmqb4qzE1imA==;EndpointSuffix=core.windows.net";
 
+        public List<Person> Persons { get; set; } = new List<Person>();
+
         [HttpPost]
         public async Task OnPostAsync(string firstname, string lastname, IFormFile file)
         {
-            // do something with emailAddress
-            var firstname1 = firstname;
-
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
 
             var sbc = storageAccount.CreateCloudBlobClient();
-            var cbc = sbc.GetContainerReference("samples-images");
-            var cbc2 = sbc.GetContainerReference("sample-images-sm");
-            cbc2.CreateIfNotExists();
 
+            //Blob Containers
+            var writeContainer = sbc.GetContainerReference("samples-images");
+            var readContainer = sbc.GetContainerReference("sample-images-sm");
+            await writeContainer.CreateIfNotExistsAsync();
+            await readContainer.CreateIfNotExistsAsync();
+
+            // Queue
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
             CloudQueue queue = queueClient.GetQueueReference("bjornosqueue");
 
-            await PublishToQueueAsync(queue, firstname + "" + lastname);
-            await PublishToBlobStorage(cbc, $"{firstname}_{lastname}.png", file);
+            await PublishToQueueAsync(queue, new Person(firstname, lastname));
+            PublishToBlobStorage(writeContainer, $"{firstname}_{lastname}.png", file);
+
+            var selectAllQuery = new TableQuery<Person>();
+
+            var account = CosmosCloudStorageAccount.Parse(connectionString);
+            var client = account.CreateCloudTableClient();
+            var table = client.GetTableReference("persons");
+
+            Persons = table.ExecuteQuery(selectAllQuery).ToList();
         }
 
-        private static async Task PublishToQueueAsync(CloudQueue theQueue, string newMessage)
+        private static async Task PublishToQueueAsync(CloudQueue theQueue, Person person)
         {
             bool createdQueue = await theQueue.CreateIfNotExistsAsync();
 
@@ -43,14 +59,12 @@ namespace MyWebFrontEnd.Pages
                 Console.WriteLine("The queue was created.");
             }
 
-            CloudQueueMessage message = new CloudQueueMessage(newMessage);
+            CloudQueueMessage message = new CloudQueueMessage(person.ToString());
             await theQueue.AddMessageAsync(message);
         }
 
-        private static async Task PublishToBlobStorage(CloudBlobContainer container, string fileName, IFormFile file)
+        private static void PublishToBlobStorage(CloudBlobContainer container, string fileName, IFormFile file)
         {
-            await container.CreateIfNotExistsAsync();
-
             Console.WriteLine("Publishing img to blob storage");
 
             var photo = container.GetBlockBlobReference(fileName);
