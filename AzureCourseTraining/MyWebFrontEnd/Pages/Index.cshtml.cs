@@ -41,6 +41,9 @@ namespace MyWebFrontEnd.Pages
             await PublishToQueueAsync(queue, new Person(firstname, lastname));
             PublishToBlobStorage(writeContainer, $"{firstname}_{lastname}.png", file);
 
+            // De person die net is gepost zit nog in de queue deze moet nog door de azure function
+            // naar table gestorage gezet worden Oftewel wij lopen hier in principe 1 post achter En
+            // dat is prima voor test doeleinden
             var selectAllQuery = new TableQuery<Person>();
 
             var account = CosmosCloudStorageAccount.Parse(connectionString);
