@@ -12,6 +12,8 @@ namespace MyAzureWebJob
         {
             Console.WriteLine($"Incoming message Bjorno:{message}");
             log.WriteLine(message);
+
+            //TableOperations to = TableOperations.Insert()//        }
         }
     }
 }

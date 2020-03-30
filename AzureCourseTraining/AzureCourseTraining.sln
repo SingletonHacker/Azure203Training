@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebFrontEnd", "MyWebFrontEnd\MyWebFrontEnd.csproj", "{D02520C5-42DE-4379-B6A0-C3C3DAE2AC39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebFrontEnd", "MyWebFrontEnd\MyWebFrontEnd.csproj", "{D02520C5-42DE-4379-B6A0-C3C3DAE2AC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAzureWebJob", "MyAzureWebJob\MyAzureWebJob.csproj", "{83AB5FB9-59A5-4367-94A1-10407759E310}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAzureWebJob", "MyAzureWebJob\MyAzureWebJob.csproj", "{83AB5FB9-59A5-4367-94A1-10407759E310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Functions\Functions.csproj", "{377A04B8-EAEC-472A-900F-7348121E65B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{83AB5FB9-59A5-4367-94A1-10407759E310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83AB5FB9-59A5-4367-94A1-10407759E310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83AB5FB9-59A5-4367-94A1-10407759E310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377A04B8-EAEC-472A-900F-7348121E65B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377A04B8-EAEC-472A-900F-7348121E65B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377A04B8-EAEC-472A-900F-7348121E65B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377A04B8-EAEC-472A-900F-7348121E65B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
